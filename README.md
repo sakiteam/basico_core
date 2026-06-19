@@ -1,39 +1,115 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Basico Core
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A Flutter package providing core UI components and utilities with built-in internationalization support.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- **UI Components**: Custom widgets for common UI patterns (buttons, text fields, alerts, etc.)
+- **Navigation Utilities**: Helper functions for navigation and dialogs
+- **Presentation Flow**: Ready-to-use presentation pages with terms acceptance
+- **Internationalization**: Full i18n support with French and English translations using Flutter's intl package
+
+## Supported Languages
+
+- 🇫🇷 French (fr) - Default
+- 🇬🇧 English (en)
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add this package to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  basico_core:
+    path: ../basico_core  # or your package path
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+### Setting up Localization
+
+In your `MaterialApp`, configure the localization delegates:
 
 ```dart
-const like = 'sample';
+import 'package:flutter/material.dart';
+import 'package:basico_core/basico_core.dart';
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      localizationsDelegates: BasicoLocalizations.localizationsDelegates,
+      supportedLocales: BasicoLocalizations.supportedLocales,
+      home: MyHomePage(),
+    );
+  }
+}
 ```
+
+### Using Localized Strings
+
+Access localized strings in your widgets:
+
+```dart
+import 'package:basico_core/basico_core.dart';
+
+Widget build(BuildContext context) {
+  final l10n = BasicoLocalizations.of(context)!;
+  
+  return CustomButton(
+    label: l10n.start,
+    onPressed: () {},
+  );
+}
+```
+
+### Using UI Components
+
+```dart
+import 'package:basico_core/basico_core.dart';
+
+// Custom Button
+CustomButton(
+  label: 'Click me',
+  onPressed: () {},
+)
+
+// Custom Text Field
+CustomTextField(
+  label: 'Email',
+  isRequired: true,
+  keyboardType: TextInputType.email,
+)
+
+// Custom Alert
+showDialog(
+  context: context,
+  builder: (_) => CustomAlert(
+    title: 'Warning',
+    description: 'Are you sure?',
+    onAccepted: () {},
+  ),
+);
+```
+
+## Localization
+
+The package uses Flutter's official internationalization system with `intl`. All UI strings are automatically translated based on the device locale.
+
+For more details on localization, see [LOCALIZATION.md](LOCALIZATION.md).
+
+### Available Localized Strings
+
+- Navigation: `start`, `previous`, `next`
+- Actions: `accept`, `refuse`, `cancel`, `validate`, `ok`, `quit`
+- Messages: `warning`, `requiredField`, `abandonFormWarning`
+- Terms: `termsOfService`, `iHaveReadTheTerms(appName)`
+- And more...
+
+## Example
+
+See the [example](example/) folder for a complete working example demonstrating localization features.
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+This package is designed to provide a consistent UI experience across Flutter applications with built-in internationalization support.

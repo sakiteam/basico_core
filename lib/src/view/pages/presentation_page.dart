@@ -3,6 +3,7 @@ import 'package:basico_core/src/view/widgets/custom_app_bar.dart';
 import 'package:basico_core/src/view/widgets/poster.dart';
 import 'package:basico_core/src/view/widgets/process_bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:basico_core/l10n/basico_localizations.dart';
 
 import '../../logic/utils/navigation_utils.dart';
 import '../widgets/presentation_terms.dart';
@@ -96,7 +97,7 @@ class _BasicoPresentationPageState extends State<BasicoPresentationPage> {
                 },
               );
             },
-            completionLabel: "Commencer",
+            completionLabel: BasicoLocalizations.of(context)!.start,
           ),
         ],
       ),

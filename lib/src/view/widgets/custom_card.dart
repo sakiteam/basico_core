@@ -47,7 +47,7 @@ class CustomCard extends StatelessWidget {
             side: borderWidth == 0
                 ? BorderSide.none
                 : BorderSide(
-                    color: borderColor ?? Colors.grey,
+                    color: borderColor ?? Colors.grey.shade400,
                     width: borderWidth ?? 0.5,
                   ),
           ),

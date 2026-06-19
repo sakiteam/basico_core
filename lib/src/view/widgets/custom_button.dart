@@ -1,11 +1,8 @@
 import 'package:basico_core/basico_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-enum CustomButtonType {
-  flat,
-  elevated,
-  outlined,
-}
+enum CustomButtonType { flat, elevated, outlined }
 
 class CustomButton extends StatelessWidget {
   final CustomButtonType type;
@@ -51,46 +48,41 @@ class CustomButton extends StatelessWidget {
         ? const SizedBox(
             width: 24,
             height: 24,
-            child: CircularProgressIndicator(
-              strokeWidth: 2,
-            ),
+            child: CircularProgressIndicator(strokeWidth: 2),
           )
         : (child ??
-            Row(
-              spacing: normalSpacing,
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                if (iconWidget != null) iconWidget!,
-                if (icon != null)
-                  Icon(
-                    icon,
-                    size: iconSize,
-                  ),
-                (label == null
-                    ? const SizedBox()
-                    : Text(
-                        label!.toUpperCase(),
-                        style: labelStyle ??
-                            const TextStyle(
-                              fontSize: 13,
-                            ),
-                      ))
-              ],
-            ));
+              Row(
+                spacing: normalSpacing,
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ?iconWidget,
+                  if (icon != null) Icon(icon, size: iconSize),
+                  (label == null
+                      ? const SizedBox()
+                      : Text(
+                          label!.toUpperCase(),
+                          style: labelStyle ?? const TextStyle(fontSize: 13),
+                        )),
+                ],
+              ));
+
+    final finalHeight = kIsWeb ? (height ?? 40) : height;
 
     final finalOnPressed = loading ? null : onPressed;
 
-    final finalShape = shape ??
+    final finalShape =
+        shape ??
         RoundedRectangleBorder(
-          borderRadius: borderRadius ?? BorderRadius.circular(height ?? 50),
+          borderRadius:
+              borderRadius ?? BorderRadius.circular(finalHeight ?? 50),
         );
 
     switch (type) {
       case CustomButtonType.flat:
         return SizedBox(
           width: width,
-          height: height,
+          height: finalHeight,
           child: TextButton(
             onPressed: finalOnPressed,
             style: TextButton.styleFrom(
@@ -106,7 +98,7 @@ class CustomButton extends StatelessWidget {
       case CustomButtonType.outlined:
         return SizedBox(
           width: width,
-          height: height,
+          height: finalHeight,
           child: OutlinedButton(
             onPressed: finalOnPressed,
             style: TextButton.styleFrom(
@@ -127,7 +119,7 @@ class CustomButton extends StatelessWidget {
       case CustomButtonType.elevated:
         return SizedBox(
           width: width,
-          height: height,
+          height: finalHeight,
           child: ElevatedButton(
             onPressed: finalOnPressed,
             style: TextButton.styleFrom(

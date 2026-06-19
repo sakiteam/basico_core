@@ -4,6 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:basico_core/l10n/basico_localizations.dart';
 
 import '../../logic/utils/navigation_utils.dart';
 import '../../logic/utils/spacing_utils.dart';
@@ -44,7 +45,7 @@ class _BasicoPresentationTermsState extends State<BasicoPresentationTerms> {
             const SizedBox(height: regularSpacing),
             Poster(
               image: widget.image,
-              title: "Une seconde s'il vous plaît !",
+              title: BasicoLocalizations.of(context)!.oneSecondPlease,
               padding: const EdgeInsets.all(regularSpacing).copyWith(
                 bottom: 0,
               ),
@@ -63,13 +64,11 @@ class _BasicoPresentationTermsState extends State<BasicoPresentationTerms> {
                     ),
                     children: [
                       TextSpan(
-                        text:
-                            // "Avant de commencer à utiliser ${widget.title} en toute sérénité, vous devez lire et accepter ",
-                            "Avant de commencer, veuillez consulter ",
-                        // style:  TextStyle(color: Colors.black),
+                        text: BasicoLocalizations.of(context)!
+                            .beforeStartingPleaseConsult,
                       ),
                       TextSpan(
-                        text: "les conditions générales d'utilisation (CGU)",
+                        text: BasicoLocalizations.of(context)!.termsOfService,
                         style: TextStyle(
                           color: Theme.of(context).primaryColor,
                         ),
@@ -80,8 +79,8 @@ class _BasicoPresentationTermsState extends State<BasicoPresentationTerms> {
                             );
                           },
                       ),
-                      const TextSpan(
-                        text: " de la plateforme !",
+                      TextSpan(
+                        text: BasicoLocalizations.of(context)!.ofThePlatform,
                       ),
                     ],
                   ),
@@ -96,12 +95,13 @@ class _BasicoPresentationTermsState extends State<BasicoPresentationTerms> {
                 color: _confirm ? Colors.grey.shade50 : Colors.white,
                 shape: RoundedRectangleBorder(
                   side: const BorderSide(width: 0.5, color: Colors.grey),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(16),
                 ),
                 child: CheckboxListTile(
                   contentPadding: const EdgeInsets.fromLTRB(16, 2, 8, 0),
                   title: Text(
-                    "J'ai vraiment lu les CGU de ${widget.title}",
+                    BasicoLocalizations.of(context)!
+                        .iHaveReadTheTerms(widget.title),
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: _confirm ? Theme.of(context).primaryColor : null,
@@ -117,31 +117,39 @@ class _BasicoPresentationTermsState extends State<BasicoPresentationTerms> {
               ),
             ),
             const SizedBox(height: 16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                CustomButton(
-                  width: 150,
-                  label: "Refuser",
-                  type: CustomButtonType.flat,
-                  onPressed: () {
-                    popPage(context);
-                  },
-                ),
-                CustomButton(
-                  width: 150,
-                  label: "Accepter",
-                  onPressed: _confirm
-                      ? () {
-                          popPage(context);
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: regularSpacing),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    child: CustomButton(
+                      width: 150,
+                      label: BasicoLocalizations.of(context)!.refuse,
+                      type: CustomButtonType.flat,
+                      onPressed: () {
+                        popPage(context);
+                      },
+                    ),
+                  ),
+                  regularGap,
+                  Expanded(
+                    child: CustomButton(
+                      width: 150,
+                      label: BasicoLocalizations.of(context)!.accept,
+                      onPressed: _confirm
+                          ? () {
+                              popPage(context);
 
-                          LocalStorageService.welcomed = true;
+                              LocalStorageService.welcomed = true;
 
-                          widget.onAccepted();
-                        }
-                      : null,
-                ),
-              ],
+                              widget.onAccepted();
+                            }
+                          : null,
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: bottomPadding + regularSpacing),
           ],

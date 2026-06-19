@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:basico_core/l10n/basico_localizations.dart';
 
 import 'custom_label.dart';
 
@@ -40,6 +41,9 @@ class CustomTextField extends StatefulWidget {
   final InputBorder? border;
   final bool displayLabelOnBottom;
   final TextStyle? style;
+  final TextAlign textAlign;
+  final bool autocorrect;
+  final TextStyle? labelStyle;
 
   const CustomTextField({
     super.key,
@@ -77,6 +81,9 @@ class CustomTextField extends StatefulWidget {
     this.decoration,
     this.displayLabelOnBottom = false,
     this.style,
+    this.textAlign = TextAlign.start,
+    this.autocorrect = true,
+    this.labelStyle,
   });
 
   static final defaultborder = OutlineInputBorder(
@@ -148,18 +155,20 @@ class _CustomTextFieldState extends State<CustomTextField> {
             isRequired: widget.isRequired,
             helpTitle: widget.helpTitle,
             helpDescription: widget.helpDescription,
+            style: widget.labelStyle,
           ),
         TextFormField(
           style: widget.style,
+          autocorrect: widget.autocorrect,
           focusNode: widget.focusNode,
           // key: widget.globalKey,
-
+          textAlign: widget.textAlign,
           onFieldSubmitted: widget.onFieldSubmitted,
           autovalidateMode: widget.autovalidateMode,
           validator: widget.isRequired
               ? (value) {
                   if (value == null || value.isEmpty) {
-                    return "Ce champ est obligatoire !";
+                    return BasicoLocalizations.of(context)!.requiredField;
                   }
 
                   return widget.validator?.call(value);

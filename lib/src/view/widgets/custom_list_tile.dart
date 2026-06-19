@@ -15,6 +15,7 @@ class CustomListTile extends StatelessWidget {
   final EdgeInsets? contentPadding;
   final double? minVerticalPadding;
   final double? minTileHeight;
+  final Widget? subtitleWidget;
 
   const CustomListTile({
     super.key,
@@ -32,6 +33,7 @@ class CustomListTile extends StatelessWidget {
     this.contentPadding,
     this.minVerticalPadding,
     this.minTileHeight,
+    this.subtitleWidget,
   });
 
   @override
@@ -50,17 +52,18 @@ class CustomListTile extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
             ),
-      subtitle: subtitle == null
-          ? null
-          : Text(
-              subtitle!,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-              style: subtitleStyle ??
-                  const TextStyle(
-                    color: Colors.grey,
-                  ),
-            ),
+      subtitle: subtitleWidget ??
+          (subtitle == null
+              ? null
+              : Text(
+                  subtitle!,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  style: subtitleStyle ??
+                      const TextStyle(
+                        color: Colors.grey,
+                      ),
+                )),
       trailing: trailing ?? const Icon(Icons.keyboard_arrow_right),
       leading: leading ??
           (icon == null

@@ -1,0 +1,77 @@
+{
+  "@@locale": "fr",
+  "requiredField": "Ce champ est obligatoire !",
+  "@requiredField": {
+    "description": "Message d'erreur pour un champ obligatoire"
+  },
+  "start": "Commencer",
+  "@start": {
+    "description": "Bouton pour commencer"
+  },
+  "previous": "Précédent",
+  "@previous": {
+    "description": "Bouton précédent"
+  },
+  "next": "Suivant",
+  "@next": {
+    "description": "Bouton suivant"
+  },
+  "oneSecondPlease": "Une seconde s'il vous plaît !",
+  "@oneSecondPlease": {
+    "description": "Titre de la page des conditions"
+  },
+  "beforeStartingPleaseConsult": "Avant de commencer, veuillez consulter ",
+  "@beforeStartingPleaseConsult": {
+    "description": "Texte avant le lien des CGU"
+  },
+  "termsOfService": "les conditions générales d'utilisation (CGU)",
+  "@termsOfService": {
+    "description": "Lien vers les CGU"
+  },
+  "ofThePlatform": " de la plateforme !",
+  "@ofThePlatform": {
+    "description": "Texte après le lien des CGU"
+  },
+  "iHaveReadTheTerms": "J'ai vraiment lu les CGU de {appName}",
+  "@iHaveReadTheTerms": {
+    "description": "Texte de confirmation de lecture des CGU",
+    "placeholders": {
+      "appName": {
+        "type": "String",
+        "example": "Mon Application"
+      }
+    }
+  },
+  "refuse": "Refuser",
+  "@refuse": {
+    "description": "Bouton refuser"
+  },
+  "accept": "Accepter",
+  "@accept": {
+    "description": "Bouton accepter"
+  },
+  "cancel": "Annuler",
+  "@cancel": {
+    "description": "Bouton annuler"
+  },
+  "validate": "Valider",
+  "@validate": {
+    "description": "Bouton valider"
+  },
+  "ok": "OK",
+  "@ok": {
+    "description": "Bouton OK"
+  },
+  "warning": "Avertissement",
+  "@warning": {
+    "description": "Titre d'avertissement"
+  },
+  "abandonFormWarning": "Voulez-vous vraiment abandonner le remplissage du formulaire ?",
+  "@abandonFormWarning": {
+    "description": "Message d'avertissement pour abandon de formulaire"
+  },
+  "quit": "Quitter",
+  "@quit": {
+    "description": "Bouton quitter"
+  }
+}

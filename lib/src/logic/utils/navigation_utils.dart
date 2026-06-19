@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../view/widgets/custom_alert.dart';
+import 'package:basico_core/l10n/basico_localizations.dart';
 
 Future<T?> pushPage<T extends Object?>(
   BuildContext context,
@@ -34,8 +35,8 @@ Future<T?> pushPageAndRemoveAll<T extends Object?>(
   );
 }
 
-void popPage(BuildContext context) {
-  Navigator.pop(context);
+void popPage<T>(BuildContext context, [T? value]) {
+  Navigator.pop<T>(context, value);
 }
 
 Future<T?> showSheet<T>({
@@ -57,14 +58,13 @@ Future<T?> showSheet<T>({
 Future<void> showFormEditionDialog(BuildContext context) {
   return showDialog(
     context: context,
-    builder: (_) {
+    builder: (dialogContext) {
       return CustomAlert(
-        title: "Avertissement",
-        description:
-            "Voulez-vous vraiment abandonner le remplissage du formulaire ?",
+        title: BasicoLocalizations.of(context)!.warning,
+        description: BasicoLocalizations.of(context)!.abandonFormWarning,
         image: "assets/images/warning.svg",
         color: Colors.red,
-        acceptationText: "Quitter",
+        acceptationText: BasicoLocalizations.of(context)!.quit,
         onAccepted: () {
           popPage(context);
         },

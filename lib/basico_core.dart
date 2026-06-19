@@ -15,6 +15,12 @@ export "src/view/widgets/custom_selector.dart";
 export "src/view/widgets/custom_page_indicator.dart";
 export "src/view/widgets/custom_list_tile.dart";
 export "src/view/widgets/custom_label.dart";
+export "src/view/widgets/presentation_terms.dart";
+export "src/view/widgets/emptiness_poster.dart";
+export "src/view/widgets/error_poster.dart";
+
+// Localization
+export "l10n/basico_localizations.dart";
 
 // Others
 export "src/data/utilities/poster_utility.dart";

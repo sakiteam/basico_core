@@ -1,6 +1,7 @@
 import 'custom_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:defer_pointer/defer_pointer.dart';
+import 'package:basico_core/l10n/basico_localizations.dart';
 
 class CustomLabel extends StatelessWidget {
   final String text;
@@ -8,6 +9,7 @@ class CustomLabel extends StatelessWidget {
   final String? helpTitle;
   final String? helpDescription;
   final bool center;
+  final TextStyle? style;
 
   const CustomLabel(
     this.text, {
@@ -16,6 +18,7 @@ class CustomLabel extends StatelessWidget {
     this.helpTitle,
     this.helpDescription,
     this.center = false,
+    this.style,
   });
 
   @override
@@ -31,11 +34,12 @@ class CustomLabel extends StatelessWidget {
         children: [
           Text(
             text.toUpperCase(),
-            style: TextStyle(
-              color: Theme.of(context).primaryColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 12,
-            ),
+            style: style ??
+                TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                ),
           ),
           if (isRequired)
             Container(
@@ -63,7 +67,8 @@ class CustomLabel extends StatelessWidget {
                             image: "assets/images/help.svg",
                             description: helpDescription ?? "",
                             simple: true,
-                            acceptationText: "OK",
+                            acceptationText:
+                                BasicoLocalizations.of(context)!.ok,
                           );
                         },
                       );

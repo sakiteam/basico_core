@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:basico_core/l10n/basico_localizations.dart';
 
 import '../../logic/utils/navigation_utils.dart';
 import '../../logic/utils/spacing_utils.dart';
@@ -114,7 +115,7 @@ class CustomAlert extends StatelessWidget {
 
                                   onRejected?.call();
                                 },
-                                label: rejectionText ?? "Annuler",
+                                label: rejectionText ?? BasicoLocalizations.of(context)!.cancel,
                               ),
                             ),
                           Expanded(
@@ -129,7 +130,7 @@ class CustomAlert extends StatelessWidget {
 
                                 onAccepted?.call();
                               },
-                              label: acceptationText ?? "Valider",
+                              label: acceptationText ?? BasicoLocalizations.of(context)!.validate,
                             ),
                           ),
                         ],

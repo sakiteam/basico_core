@@ -73,12 +73,7 @@ class Poster extends StatelessWidget {
         : Expanded(
             flex: expandImage ? 1 : 0,
             child: Center(
-              child: SizedBox(
-                height: 200,
-                child: SvgPicture.asset(
-                  image!,
-                ),
-              ),
+              child: SizedBox(height: 200, child: SvgPicture.asset(image!)),
             ),
           );
     final titleContent = title == null
@@ -86,10 +81,12 @@ class Poster extends StatelessWidget {
         : Text(
             title!,
             textAlign: TextAlign.center,
-            style: titleStyle ??
-                const TextStyle(
+            style:
+                titleStyle ??
+                TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
           );
     final descriptionContent = description == null
@@ -100,20 +97,15 @@ class Poster extends StatelessWidget {
               child: Text(
                 description!,
                 textAlign: TextAlign.center,
-                style: descriptionStyle ??
-                    const TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey,
-                    ),
+                style:
+                    descriptionStyle ??
+                    const TextStyle(fontSize: 16, color: Colors.grey),
               ),
             ),
           );
     final contentContent = content == null
         ? null
-        : Expanded(
-            flex: expandContent ? 1 : 0,
-            child: content!,
-          );
+        : Expanded(flex: expandContent ? 1 : 0, child: content!);
 
     if (contentContent == null || contentAutomaticPadding) {
       return SafeArea(
@@ -126,11 +118,11 @@ class Poster extends StatelessWidget {
           spacing: regularSpacing,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (iconContent != null) iconContent,
-            if (imageContent != null) imageContent,
-            if (titleContent != null) titleContent,
-            if (descriptionContent != null) descriptionContent,
-            if (contentContent != null) contentContent,
+            ?iconContent,
+            ?imageContent,
+            ?titleContent,
+            ?descriptionContent,
+            ?contentContent,
           ],
         ),
       );
@@ -145,8 +137,10 @@ class Poster extends StatelessWidget {
         left: false,
         right: false,
         bottom: safeAreaBottom,
-        minimum: (padding ?? EdgeInsets.all(regularSpacing))
-            .copyWith(left: 0, right: 0),
+        minimum: (padding ?? EdgeInsets.all(regularSpacing)).copyWith(
+          left: 0,
+          right: 0,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           spacing: regularSpacing,
@@ -158,10 +152,10 @@ class Poster extends StatelessWidget {
                 spacing: regularSpacing,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  if (iconContent != null) iconContent,
-                  if (imageContent != null) imageContent,
-                  if (titleContent != null) titleContent,
-                  if (descriptionContent != null) descriptionContent,
+                  ?iconContent,
+                  ?imageContent,
+                  ?titleContent,
+                  ?descriptionContent,
                 ],
               ),
             ),
@@ -185,11 +179,8 @@ class PosterTitle extends StatelessWidget {
     return Text(
       title,
       textAlign: textAlign,
-      style: style ??
-          const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+      style:
+          style ?? const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
     );
   }
 }

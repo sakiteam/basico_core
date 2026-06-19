@@ -13,6 +13,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool divider;
   final Widget? titleWidget;
   final Widget? subtitleWidget;
+  final PreferredSizeWidget? bottom;
 
   const CustomAppBar({
     super.key,
@@ -28,6 +29,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.divider = false,
     this.titleWidget,
     this.subtitleWidget,
+    this.bottom,
   });
 
   @override
@@ -40,24 +42,23 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           actions: actions,
           centerTitle: true,
           toolbarHeight: height,
-          title: child ??
+          title:
+              child ??
               Column(
                 children: [
                   if (title != null && titleWidget == null) Text(title!),
-                  if (titleWidget != null) titleWidget!,
+                  ?titleWidget,
                   if (subtitle != null && subtitleWidget == null)
                     Text(
                       subtitle!,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey,
-                      ),
+                      style: const TextStyle(fontSize: 14, color: Colors.grey),
                     ),
-                  if (subtitleWidget != null) subtitleWidget!,
+                  ?subtitleWidget,
                 ],
               ),
           backgroundColor: backgroundColor,
           foregroundColor: foregroundColor,
+          bottom: bottom,
         ),
         if (divider)
           Positioned(bottom: 0, left: 0, right: 0, child: const Divider()),

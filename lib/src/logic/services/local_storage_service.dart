@@ -68,6 +68,10 @@ class LocalStorageService {
 
   static bool get xof => currency == "FCFA";
 
+  static String get activeFeature =>
+      getString("active_feature") ?? "product_to_model";
+  static set activeFeature(String value) => setString("active_feature", value);
+
   ///
 
   static bool get initialized => companyId.isNotEmpty;

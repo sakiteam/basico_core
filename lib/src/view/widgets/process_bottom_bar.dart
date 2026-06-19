@@ -2,6 +2,7 @@ import 'package:basico_core/src/view/widgets/custom_page_indicator.dart';
 import 'package:flutter/material.dart';
 
 import '../../logic/utils/spacing_utils.dart';
+import 'package:basico_core/l10n/basico_localizations.dart';
 import 'bottom_bar.dart';
 import 'custom_button.dart';
 
@@ -50,7 +51,7 @@ class ProcessBottomBar extends StatelessWidget {
                 : CustomButton(
                     type: CustomButtonType.flat,
                     width: _buttonWidth,
-                    label: "Précédent",
+                    label: BasicoLocalizations.of(context)!.previous,
                     onPressed: backwardPossible
                         ? () {
                             controller.previousPage(
@@ -74,7 +75,7 @@ class ProcessBottomBar extends StatelessWidget {
                 : CustomButton(
                     type: CustomButtonType.flat,
                     width: _buttonWidth,
-                    label: "Suivant",
+                    label: BasicoLocalizations.of(context)!.next,
                     onPressed: forwardPossible
                         ? () {
                             controller.nextPage(

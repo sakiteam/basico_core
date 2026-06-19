@@ -1,0 +1,77 @@
+{
+  "@@locale": "en",
+  "requiredField": "This field is required!",
+  "@requiredField": {
+    "description": "Error message for a required field"
+  },
+  "start": "Start",
+  "@start": {
+    "description": "Button to start"
+  },
+  "previous": "Previous",
+  "@previous": {
+    "description": "Previous button"
+  },
+  "next": "Next",
+  "@next": {
+    "description": "Next button"
+  },
+  "oneSecondPlease": "One second please!",
+  "@oneSecondPlease": {
+    "description": "Title of the terms page"
+  },
+  "beforeStartingPleaseConsult": "Before starting, please consult ",
+  "@beforeStartingPleaseConsult": {
+    "description": "Text before the terms link"
+  },
+  "termsOfService": "the Terms of Service (ToS)",
+  "@termsOfService": {
+    "description": "Link to the ToS"
+  },
+  "ofThePlatform": " of the platform!",
+  "@ofThePlatform": {
+    "description": "Text after the ToS link"
+  },
+  "iHaveReadTheTerms": "I have really read the ToS of {appName}",
+  "@iHaveReadTheTerms": {
+    "description": "Terms confirmation text",
+    "placeholders": {
+      "appName": {
+        "type": "String",
+        "example": "My Application"
+      }
+    }
+  },
+  "refuse": "Refuse",
+  "@refuse": {
+    "description": "Refuse button"
+  },
+  "accept": "Accept",
+  "@accept": {
+    "description": "Accept button"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button"
+  },
+  "validate": "Validate",
+  "@validate": {
+    "description": "Validate button"
+  },
+  "ok": "OK",
+  "@ok": {
+    "description": "OK button"
+  },
+  "warning": "Warning",
+  "@warning": {
+    "description": "Warning title"
+  },
+  "abandonFormWarning": "Do you really want to abandon filling out the form?",
+  "@abandonFormWarning": {
+    "description": "Warning message for form abandonment"
+  },
+  "quit": "Quit",
+  "@quit": {
+    "description": "Quit button"
+  }
+}
