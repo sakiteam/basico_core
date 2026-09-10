@@ -47,13 +47,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               Column(
                 children: [
                   if (title != null && titleWidget == null) Text(title!),
-                  ?titleWidget,
+                  if (titleWidget != null) titleWidget!,
                   if (subtitle != null && subtitleWidget == null)
                     Text(
                       subtitle!,
                       style: const TextStyle(fontSize: 14, color: Colors.grey),
                     ),
-                  ?subtitleWidget,
+                  if (subtitleWidget != null) subtitleWidget!,
                 ],
               ),
           backgroundColor: backgroundColor,

@@ -168,7 +168,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           validator: widget.isRequired
               ? (value) {
                   if (value == null || value.isEmpty) {
-                    return BasicoLocalizations.of(context)!.requiredField;
+                    return BasicoLocalizations.of(context)?.requiredField ?? 'Ce champ est requis';
                   }
 
                   return widget.validator?.call(value);
