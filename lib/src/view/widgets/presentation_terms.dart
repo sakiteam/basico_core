@@ -73,10 +73,12 @@ class _BasicoPresentationTermsState extends State<BasicoPresentationTerms> {
                           color: Theme.of(context).primaryColor,
                         ),
                         recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            launchUrl(
-                              Uri.parse(widget.link),
-                            );
+                          ..onTap = () async {
+                            try {
+                              await launchUrl(Uri.parse(widget.link));
+                            } catch (e) {
+                              debugPrint(e.toString());
+                            }
                           },
                       ),
                       TextSpan(

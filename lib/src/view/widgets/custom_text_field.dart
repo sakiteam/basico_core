@@ -44,6 +44,8 @@ class CustomTextField extends StatefulWidget {
   final TextAlign textAlign;
   final bool autocorrect;
   final TextStyle? labelStyle;
+  final bool obscureText;
+  final Iterable<String>? autofillHints;
 
   const CustomTextField({
     super.key,
@@ -84,6 +86,8 @@ class CustomTextField extends StatefulWidget {
     this.textAlign = TextAlign.start,
     this.autocorrect = true,
     this.labelStyle,
+    this.obscureText = false,
+    this.autofillHints,
   });
 
   static final defaultborder = OutlineInputBorder(
@@ -160,6 +164,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
         TextFormField(
           style: widget.style,
           autocorrect: widget.autocorrect,
+          obscureText: widget.obscureText,
+          autofillHints: widget.autofillHints,
           focusNode: widget.focusNode,
           // key: widget.globalKey,
           textAlign: widget.textAlign,

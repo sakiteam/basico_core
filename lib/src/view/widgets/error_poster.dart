@@ -7,6 +7,7 @@ class ErrorPoster extends StatelessWidget {
   final String? description;
   final String? image;
   final Widget? content;
+  final bool ignoreDescription;
 
   const ErrorPoster({
     super.key,
@@ -14,6 +15,7 @@ class ErrorPoster extends StatelessWidget {
     this.description,
     this.image,
     this.content,
+    this.ignoreDescription = false,
   });
 
   @override
@@ -23,8 +25,10 @@ class ErrorPoster extends StatelessWidget {
         child: Poster(
           image: image ?? "assets/images/failure.svg",
           title: title ?? "Une erreur est survenue !",
-          description: description ??
-              "Veuillez fermer cette section de l'application puis relancez-la une nouvelle fois s'il vous plaît !",
+          description: ignoreDescription
+              ? null
+              : (description ??
+                    "Veuillez fermer cette section de l'application puis relancez-la une nouvelle fois s'il vous plaît !"),
           content: content,
         ),
       ),
